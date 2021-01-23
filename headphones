@@ -1,0 +1,112 @@
+//Model a real life object as a Java class with at least one attribute and an instance method. 
+//Write a main method to create an instance of the class, assign a value to the attribute, 
+//call your method, and demonstrate that the value of the attribute changed and that the method 
+//successfully completed what it was supposed to do. Submit your program as an attached  .java file 
+//and post a screen shot to show that you have been able to successfully run that program.  
+//Troy Raines
+//1/18/2021
+//Professor Salomie
+//CMIS 242
+
+
+
+import java.awt.Color;
+
+//Public class HeadPhones
+
+public class HeadPhones {
+    public static final int LOW = 1;
+    public static final int MEDIUM = 2;
+    public static final int HIGH = 3;
+
+    private int volume;
+    private boolean pluggedIn;
+    private String manufacturer;
+    private Color headPhoneColor;
+
+    public HeadPhones() {
+        volume = MEDIUM;
+        pluggedIn = false;
+        manufacturer = "";
+        headPhoneColor = Color.BLACK;
+    }
+    //return volume of headphone
+
+    public int getVolume() {
+        return volume;
+    }
+
+    //set volume of headphone
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+    //return true if the headphone is plugged in, false otherwise
+    
+    public boolean isPluggedIn() {
+        return pluggedIn;
+    }
+
+    //set plugged in
+    
+    public void setPluggedIn(boolean pluggedIn) {
+        this.pluggedIn = pluggedIn;
+    }
+
+    //return manufacturer
+    
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    //set manufacturer
+    
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    //return headphone color
+     
+    public Color getHeadPhoneColor() {
+        return headPhoneColor;
+    }
+
+    public String getColorName() {
+        String colorName = "Black";
+        if (headPhoneColor == Color.BLACK || headPhoneColor == Color.black) {
+            colorName = "Black";
+        } else if (headPhoneColor == Color.WHITE || headPhoneColor == Color.white) {
+            colorName = "White";
+        } else if (headPhoneColor == Color.RED || headPhoneColor == Color.red) {
+            colorName = "Red";
+        } else if (headPhoneColor == Color.PINK || headPhoneColor == Color.pink) {
+            colorName = "Pink";
+        } else if (headPhoneColor == Color.CYAN || headPhoneColor == Color.cyan) {
+            colorName = "Cyan";
+        } else if (headPhoneColor == Color.BLUE || headPhoneColor == Color.blue) {
+            colorName = "Blue";
+        } else if (headPhoneColor == Color.GREEN || headPhoneColor == Color.green) {
+            colorName = "Green";
+        } else if (headPhoneColor == Color.GRAY || headPhoneColor == Color.gray) {
+            colorName = "Gray";
+        }
+        return colorName;
+    }
+    
+    //set headphone color
+     
+    public void setHeadPhoneColor(Color headPhoneColor) {
+        this.headPhoneColor = headPhoneColor;
+    }
+
+    //returns a string describing the current field values of the headphone
+     
+    public String toString() {
+        StringBuilder s = new StringBuilder("(");
+        s.append("manufacturer = ").append(manufacturer).append(", ");
+        s.append("volume = ").append(volume).append(", ");
+        s.append("plugged in = ").append(pluggedIn).append(", ");
+        s.append("color = ").append(getColorName()).append(")");
+        return s.toString();
+    }
+}
