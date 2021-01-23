@@ -1,0 +1,177 @@
+// To use Scanner, Hashmap classes
+import java.util.*;
+
+//class inventory which has main method in it
+public class Inventory {
+
+   public static void main(String[] args) {
+      
+//Creating object for scanner class and hashmap
+
+       Scanner input = new Scanner(System.in);
+       HashMap<Integer, Book> ar1 = new HashMap<Integer, Book>();
+       int choice;
+      
+//taking a do while loop which iterates until user wants to Exit
+       do
+
+       {
+//Taking choice from the user
+
+           System.out.println("MENU\n1: Add book\n2: Remove book\n3: Find book\n4:Display all books\n9: Exit program\n");
+           System.out.print("Enter your selection: ");
+           choice = input.nextInt();
+          
+//using a switch case to do selected option
+           
+           switch(choice)
+           {
+
+//Adds a book to inventory
+
+               case 1:   System.out.print("Book id = ");
+                       int id = input.nextInt();
+                       input.nextLine();
+                       System.out.print("What is Book title? ");
+                       String title = input.nextLine();
+                       System.out.print("Book price (double value)? ");
+                       double price = input.nextDouble();
+                      
+//calling book constructor with given values
+
+                       Book b = new Book(id,title,price);
+                      
+//adding the book object to hashmap
+
+                       ar1.put(id,b);
+                       break;
+                      
+               case 2: if(ar1.size() == 0)
+                       {
+                           System.out.println("The inventory has no Books to remove");
+                       }
+                       else
+                       {
+
+//using Iterator to iterate over the hashmap
+
+                       Iterator<Map.Entry<Integer, Book>> it = ar1.entrySet().iterator();
+                           int found = 0;
+                          
+//Taking id from the user
+
+                           System.out.print("Enter the book id you want to remove: ");
+                           int Bid = input.nextInt();
+                          
+//checking whether id exists in inventory or not
+
+                           while(it.hasNext())
+                           {
+                               Map.Entry<Integer,Book> b1 = it.next();
+                               int key = b1.getKey();
+                              
+//If id exists them remove it
+
+                               if(key == Bid)
+                               {
+                                   found = 1;
+                                   ar1.remove(key);
+                                   System.out.println("Book is removed from inventory");
+                                   break;
+                               }
+                           }
+                          
+//If there is no id then printing error message
+
+                           if(found == 0)
+                           {
+                               System.out.println("There is no book with given id");
+                           }
+                       }
+                       break;
+                      
+               case 3: if(ar1.size() == 0)
+                       {
+                           System.out.println("The inventory has no Books to search");
+                       }
+                       else
+                       {
+                       Iterator<Map.Entry<Integer, Book>> it = ar1.entrySet().iterator();
+                           int found = 0;
+                          
+                           System.out.print("Enter the book id you want to search: ");
+                           int Bid = input.nextInt();
+                          
+                           while(it.hasNext())
+                           {
+                               Map.Entry<Integer,Book> B2 = it.next();
+                               int key = B2.getKey();
+                              
+//If id exists then displaying book details with that id
+
+                               if(key == Bid)
+                               {
+                                   found = 1;
+                                   Book b2 = B2.getValue();
+                                   System.out.println("Book id: "+b2.id+" Book title: "+b2.title+" Book price: "+b2.price);
+                                   break;
+                               }
+                           }
+                          
+//If id not exists then Display error message
+
+                           if(found == 0)
+                           {
+                               System.out.println("There is no book with given id");
+                           }
+                       }
+                       break;
+                      
+               case 4: if(ar1.size() == 0)
+                       {
+                           System.out.println("The inventory has no Books to Display");
+                       }
+              
+                       else
+                       {
+                       Iterator<Map.Entry<Integer, Book>> it = ar1.entrySet().iterator();
+                      
+                           System.out.println("Book(s) in inventory list are: ");
+                          
+//Display all books in inventory
+
+                           while(it.hasNext())
+                           {
+                               Map.Entry<Integer,Book> B3 = it.next();
+                              
+                               Book b3 = B3.getValue();
+                              
+                               System.out.println("Book id: "+b3.id+" Book title: "+b3.title+" Book price: "+b3.price);
+                           }
+                       }
+                       break;
+                      
+               case 9: System.out.println("Thank you for using the program.GoodBye!");
+                       break;
+              
+           }
+       }while(choice!=9);
+
+   }
+
+}
+
+//This is the book class with given attributes
+class Book {
+  
+   int id;
+   String title;
+   double price;
+  
+   Book(int id, String title, double price)
+   {
+       this.id = id;
+       this.title = title;
+       this.price = price;
+   }
+}
