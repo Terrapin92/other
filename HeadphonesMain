@@ -1,0 +1,26 @@
+import java.awt.Color;
+
+class Main {
+  public static void main(String[] args) {
+    HeadPhones[] headphones = new HeadPhones[3];
+
+        headphones[0] = new HeadPhones();
+        headphones[0].setHeadPhoneColor(Color.CYAN);
+        headphones[0].setManufacturer("Thinksound");
+        headphones[1] = new HeadPhones();
+        headphones[1].setManufacturer("Monster");
+        headphones[1].setHeadPhoneColor(Color.white);
+        headphones[1].setPluggedIn(true);
+        headphones[1].setVolume(HeadPhones.HIGH);
+        headphones[2] = new HeadPhones();
+        headphones[2].setManufacturer("Sennheiser");
+        headphones[2].setHeadPhoneColor(Color.ORANGE);
+        headphones[2].setPluggedIn(true);
+        headphones[2].setVolume(HeadPhones.LOW);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Headphone #" + (i + 1));
+            System.out.println("toString() results: " + headphones[i]);
+            System.out.println("getVolume() results: " + headphones[i].getVolume());
+            System.out.println("getPluggedIn() results: " + headphones[i].isPluggedIn());
+            System.out.println("getManufacturer() results: " + headphones[i].getManufacturer());
+            System.out.println("getHeadPhoneColor() results: " + headphones[i].getColorName() + "\n");
